@@ -37,9 +37,9 @@
 //!     let sendr = context.socket(PAIR, &reactor.handle()).unwrap();
 //!     let _ = sendr.connect(TEST_ADDR).unwrap();
 //!
-//!     // Step 1: send any type implementing `Into<zmq::Message>`,
+//!     // Step 1: send any type implementing `Into<Message>`,
 //!     //         meaning `&[u8]`, `Vec<u8>`, `String`, `&str`,
-//!     //         and `zmq::Message` itself.
+//!     //         and `Message` itself.
 //!     let send_future = sendr.send("this message will be sent");
 //!
 //!     // Step 2: receive the message on the pair socket
@@ -280,12 +280,12 @@ impl Socket {
         self.get_mio_ref().set_subscribe(prefix)
     }
 
-    /// Sends a type implementing `Into<zmq::Message>` as a `Future`.
-    pub fn send<T: Into<zmq::Message>>(&self, message: T) -> SendMessage {
+    /// Sends a type implementing `Into<Message>` as a `Future`.
+    pub fn send<T: Into<Message>>(&self, message: T) -> SendMessage {
         SendMessage::new(self, message.into())
     }
 
-    /// Sends a type implementing `Into<zmq::Message>` as a `Future`.
+    /// Sends a type implementing `Into<Message>` as a `Future`.
     pub fn send_multipart<I, T>(&self, messages: I) -> SendMultipartMessage
     where
         I: IntoIterator<Item = T>,
@@ -359,10 +359,10 @@ impl<T> Sink for SocketFramed<T>
 where
     T: AsyncRead + AsyncWrite,
 {
-    type SinkItem = zmq::Message;
+    type SinkItem = Message;
     type SinkError = io::Error;
 
-    fn start_send(&mut self, item: zmq::Message) -> StartSend<zmq::Message, Self::SinkError> {
+    fn start_send(&mut self, item: Message) -> StartSend<Message, Self::SinkError> {
         trace!("SocketFramed::start_send()");
         match self.socket.write(item.deref()) {
             Err(e) => {
@@ -388,11 +388,11 @@ impl<T> Stream for SocketFramed<T>
 where
     T: AsyncRead,
 {
-    type Item = zmq::Message;
+    type Item = Message;
     type Error = io::Error;
 
     fn poll(&mut self) -> Poll<Option<Self::Item>, Self::Error> {
-        let mut buf = zmq::Message::with_capacity(1024);
+        let mut buf = Message::with_capacity(1024);
         trace!("SocketFramed::poll()");
         match self.socket.read(buf.deref_mut()) {
             Err(e) => {
@@ -403,7 +403,7 @@ where
                 }
             }
             Ok(c) => {
-                buf = zmq::Message::from_slice(&buf[..c]);
+                buf = Message::from_slice(&buf[..c]);
                 Ok(Async::Ready(Some(buf)))
             }
         }
