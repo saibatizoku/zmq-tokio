@@ -340,13 +340,13 @@ unsafe impl Send for Socket {}
 
 impl Read for Socket {
     fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
-        self.get_mut().read(buf)
+        self.io.read(buf)
     }
 }
 
 impl Write for Socket {
     fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
-        self.get_mut().write(buf)
+        self.io.write(buf)
     }
 
     fn flush(&mut self) -> io::Result<()> {
