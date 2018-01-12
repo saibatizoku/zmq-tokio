@@ -46,7 +46,7 @@ cache: cargo
 
 script:
 - |
-    travis-cargo build -- --all && travis-cargo test -- --all && travis-cargo --only nightly doc
+    travis-cargo build -- --all && travis-cargo test -- --all && travis-cargo --only nightly doc --no-deps && travis-cargo --only nightly doc -p zmq_mio --no-deps
 
 after_success:
   - travis-cargo --only nightly doc-upload
