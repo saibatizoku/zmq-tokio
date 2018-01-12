@@ -179,6 +179,12 @@ impl Socket {
         &self.inner
     }
 
+    /// Returns a mutable reference to the underlying `zmq::Socket`.
+    /// Useful for setting socket options at runtime.
+    pub fn get_mut(&mut self) -> &mut zmq::Socket {
+        &mut self.inner
+    }
+
     /// Bind the socket to the given address.
     pub fn bind(&self, address: &str) -> io::Result<()> {
         self.inner.bind(address).map_err(|e| e.into())
