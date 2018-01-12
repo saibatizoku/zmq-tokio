@@ -273,18 +273,18 @@ impl Socket {
 
 
     /// Bind the underlying socket to the given address.
-    pub fn bind(&self, address: &str) -> io::Result<()> {
-        self.get_mio_ref().bind(address)
+    pub fn bind(&self, endpoint: &str) -> io::Result<()> {
+        self.get_ref().bind(endpoint)
     }
 
-    /// Connect the underlying socket to the given address.
-    pub fn connect(&self, address: &str) -> io::Result<()> {
-        self.get_mio_ref().connect(address)
+    /// Connect a socket.
+    pub fn connect(&self, endpoint: &str) -> io::Result<()> {
+        self.get_ref().connect(endpoint)
     }
 
-    /// Subscribe the underlying socket to the given prefix.
-    pub fn set_subscribe(&self, prefix: &[u8]) -> io::Result<()> {
-        self.get_mio_ref().set_subscribe(prefix)
+    /// Disconnect a previously connected socket.
+    pub fn disconnect(&self, endpoint: &str) -> io::Result<()> {
+        self.get_ref().disconnect(endpoint)
     }
 
     /// Sends a type implementing `Into<Message>` as a `Future`.
@@ -301,19 +301,19 @@ impl Socket {
         SendMultipartMessage::new(self, messages)
     }
 
-    /// Returns a `Future` that resolves into a `zmq::Message`
+    /// Returns a `Future` that resolves into a `Message`
     pub fn recv(&self) -> ReceiveMessage {
         ReceiveMessage::new(self)
     }
 
-    /// Returns a `Future` that resolves into a `Vec<zmq::Message>`
+    /// Returns a `Future` that resolves into a `Vec<Message>`
     pub fn recv_multipart(&self) -> ReceiveMultipartMessage {
         ReceiveMultipartMessage::new(self)
     }
 
-    /// Get the SocketType
+    /// Return the type of this socket.
     pub fn get_socket_type(&self) -> io::Result<zmq::SocketType> {
-        self.get_mio_ref().get_socket_type()
+        self.get_ref().get_socket_type()
     }
 
     pub fn framed(self) -> SocketFramed<Self> {
@@ -325,13 +325,13 @@ unsafe impl Send for Socket {}
 
 impl Read for Socket {
     fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
-        self.io.read(buf)
+        self.get_mut().read(buf)
     }
 }
 
 impl Write for Socket {
     fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
-        self.io.write(buf)
+        self.get_mut().write(buf)
     }
 
     fn flush(&mut self) -> io::Result<()> {
