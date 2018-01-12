@@ -9,6 +9,8 @@ Run asynchronous ØMQ sockets with Rust's `tokio` framework.
 
 >   [mio](https://github.com/carllerche/mio). Lightweight non-blocking IO.
 
+>   [futures](https://github.com/alexcrichton/futures-rs). Zero-cost futures and streams in Rust.
+
 >   [Tokio](https://tokio.rs/). A platform for writing fast networking code with Rust.
 
 
@@ -19,7 +21,8 @@ Status
 
 [![Build Status](https://travis-ci.org/saibatizoku/zmq-tokio.svg?branch=master)](https://travis-ci.org/saibatizoku/zmq-tokio)
 
-* __[Documentation](https://saibatizoku.github.io/zmq-tokio/zmq_tokio/index.html)__
+* __zmq-tokio [documentation](https://saibatizoku.github.io/zmq-tokio/zmq_tokio/index.html)__
+* __zmq-mio [documentation](https://saibatizoku.github.io/zmq-tokio/zmq_mio/index.html)__
 
 
 This is the barely budding seed of providing access to
@@ -40,7 +43,9 @@ Rust's bindings for the ZeroMQ library, [rust-zmq](https://github.com/erickt/rus
 
 While ZeroMQ's model is asynchronous by nature, the user API states that there is a need for IO error handling, specifically for the case of `std::io::ErrorKind::WouldBlock`. Therefore, to use ZMQ sockets asynchronously, it is necessary to have some higher-level code that can enforce correct handling of non-blocking messaging. Which is what `tokio` is for. `mio` helps build the bridge that connects the synchronous with the asynchronous, by adding non-blocking compatibility, as well as a polling mechanism that is meant to be cross-platform.
 
-Integrating ZeroMQ into the `tokio` ecosystem is a perfect match.
+Finally, `futures` in Rust, which aim to `provide a robust implementation of handling asynchronous computations, ergonomic composition and usage, and zero-cost abstractions over what would otherwise be written by hand`, are way that data is handled and processed in `tokio`.
+
+It can be argued that integrating ZeroMQ into the `tokio` ecosystem is a perfect match.
 
 It can be used to extend existing ZeroMQ infrastructure, as well as to create new network components that are guaranteed to be safe, fast, and concurrent. The Rust way.
 
@@ -48,11 +53,11 @@ It can be used to extend existing ZeroMQ infrastructure, as well as to create ne
 Usage
 =====
 
-For a typical crate, you need at least `futures`, `tokio_core` and `zmq_tokio`. Realistically, you might have to install `tokio_io`, etc. That's really up to your design requirements.
+For a typical crate, you need at least `futures`, `tokio_core` and `zmq_tokio`.
 
 Add this to your `Cargo.toml`:
 
-```Cargo
+```cargo
 [dependencies]
 futures = "0.1"
 tokio_core = "0.1"
