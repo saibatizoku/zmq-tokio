@@ -316,6 +316,21 @@ impl Socket {
         self.get_ref().get_socket_type()
     }
 
+    /// Return true if there are more frames of a multipart message to receive.
+    pub fn get_rcvmore(&self) -> io::Result<bool> {
+        self.get_ref().get_rcvmore().map_err(|e| e.into())
+    }
+
+    /// Subscribe the underlying socket to the given prefix.
+    pub fn set_subscribe(&self, value: &[u8]) -> io::Result<()> {
+        self.get_ref().set_subscribe(value)
+    }
+
+    /// Unsubscribe the underlying socket from the given prefix.
+    pub fn set_unsubscribe(&self, value: &[u8]) -> io::Result<()> {
+        self.get_ref().set_unsubscribe(value)
+    }
+
     pub fn framed(self) -> SocketFramed<Self> {
         SocketFramed::new(self)
     }
