@@ -45,19 +45,21 @@ It can be used to extend existing ZeroMQ infrastructure, as well as to create ne
 Usage
 =====
 
-For a typical crate, you need at least `tokio_core` and `zmq_tokio`. Realistically, you might have to install `futures`, as well as `tokio_io`, etc. That's really up to your design requirements.
+For a typical crate, you need at least `futures`, `tokio_core` and `zmq_tokio`. Realistically, you might have to install `tokio_io`, etc. That's really up to your design requirements.
 
 Add this to your `Cargo.toml`:
 
 ```Cargo
 [dependencies]
-tokio_core = "1.0"
+futures = "0.1"
+tokio_core = "0.1"
 zmq_tokio = { git = "https://github.com/saibatizoku/zmq-tokio.git" }
 ```
 
 Then, in your crates main module (`src/lib.rs` or `src/main.rs`):
 
 ```rust
+extern crate futures;
 extern crate tokio_core;
 extern crate zmq_tokio;
 ```
