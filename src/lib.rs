@@ -261,9 +261,16 @@ impl Socket {
 
     /// A reference to the underlying `zmq_mio::Socket`. Useful
     /// for building futures.
-    pub fn get_mio_ref(&self) -> &zmq_mio::Socket {
+    pub fn get_ref(&self) -> &zmq_mio::Socket {
         self.io.get_ref()
     }
+
+    /// Returns a mutable reference to the underlying `zmq_mio::Socket`.
+    /// Useful for setting socket options at runtime.
+    pub fn get_mut(&mut self) -> &mut zmq_mio::Socket {
+        self.io.get_mut()
+    }
+
 
     /// Bind the underlying socket to the given address.
     pub fn bind(&self, address: &str) -> io::Result<()> {
