@@ -1,13 +1,16 @@
 ØMQ (ZeroMQ) for tokio
 ======================
 
-Run asynchronous ØMQ sockets with Rust, using `tokio` framework: reactors, futures, etc.
+Run asynchronous ØMQ sockets with Rust's `tokio` framework.
 
 >   [Rust](https://www.rust-lang.org/) is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.
 
 >   [ZeroMQ](http://zeromq.org/) (also known as ØMQ, 0MQ, or zmq) looks like an embeddable networking library but acts like a concurrency framework. It gives you sockets that carry atomic messages across various transports like in-process, inter-process, TCP, and multicast. You can connect sockets N-to-N with patterns like fan-out, pub-sub, task distribution, and request-reply. It's fast enough to be the fabric for clustered products. Its asynchronous I/O model gives you scalable multicore applications, built as asynchronous message-processing tasks. It has a score of language APIs and runs on most operating systems. ZeroMQ is from iMatix and is LGPLv3 open source.
 
+>   [mio](https://github.com/carllerche/mio). Lightweight non-blocking IO.
+
 >   [Tokio](https://tokio.rs/). A platform for writing fast networking code with Rust.
+
 
 This crate uses [rust-zmq](https://github.com/erickt/rust-zmq)'s bindings.
 
@@ -24,6 +27,17 @@ something useful on top of this (yet). The API will certainly change
 wildly before approaching some kind of stability.
 
 The underlying library API is still not complete.
+
+Justification
+-------------
+
+While it may cause controverse amongst network developers due to its highly _non neutral_ approach to messaging, ZeroMQ is a [fully-documented](http://zguide.zeromq.org/page:all) library that is meant to act as an _intelligent transport layer_ for messaging patterns. It's extremely portable across OS platforms, as well as across programming languages.
+
+Rust's bindings for the ZeroMQ library, [rust-zmq](https://github.com/erickt/rust-zmq), wrap the C library into a very ergonomic implementation of **most** of the API.
+
+While ZeroMQ's model is asynchronous by nature, the user API states that there is a need for IO error handling, specifically for the case of `std::io::ErrorKind::WouldBlock`. Therefore, to use ZMQ sockets asynchronously, it is necessary to have some higher-level code that can enforce correct handling of non-blocking messaging. Which is what `tokio` is for. `mio` helps build the bridge that connects the synchronous with the asynchronous, by adding non-blocking compatibility, as well as a polling mechanism that is meant to be cross-platform.
+
+Having an integration of ZeroMQ to the `tokio` ecosystem is a perfect match, technology-wise, that can extend existing ZeroMQ infrastructure, in a Rust-safe, Rust-fast, and Rust-concurrent way.
 
 Examples
 ========
