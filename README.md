@@ -19,6 +19,9 @@ Status
 
 [![Build Status](https://travis-ci.org/saibatizoku/zmq-tokio.svg?branch=master)](https://travis-ci.org/saibatizoku/zmq-tokio)
 
+* __[Documentation](https://saibatizoku.github.io/zmq-tokio/zmq_tokio/index.html)__
+
+
 This is the barely budding seed of providing access to
 ZeroMQ via the tokio async I/O abstraction.
 
