@@ -39,7 +39,7 @@ Justification
 
 While it may cause controversy amongst some network developers due to its highly _non-neutral_ approach to messaging, ZeroMQ is a [fully-documented](http://zguide.zeromq.org/page:all) library that is meant to act as an _intelligent transport layer_ for messaging patterns. It's extremely portable across OS platforms, as well as across programming languages.
 
-Rust's bindings for the ZeroMQ library, [rust-zmq](https://github.com/erickt/rust-zmq), wrap the C++ library into a very ergonomic implementation of **most** of the API.
+Rust's bindings for the ZeroMQ library, [rust-zmq](https://github.com/erickt/rust-zmq), wrap the C library into a very ergonomic implementation of **most** of the API.
 
 While ZeroMQ's model is asynchronous by nature, the user API states that there is a need for IO error handling, specifically for the case of `std::io::ErrorKind::WouldBlock`. Therefore, to use ZMQ sockets asynchronously, it is necessary to have some higher-level code that can enforce correct handling of non-blocking messaging. Which is what `tokio` is for. `mio` helps build the bridge that connects the synchronous with the asynchronous, by adding non-blocking compatibility, as well as a polling mechanism that is meant to be cross-platform.
 
