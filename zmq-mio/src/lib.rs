@@ -155,7 +155,7 @@ pub struct Socket {
 
 impl fmt::Debug for Socket {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Socket<{:?}>", self.inner.get_socket_type())
+        write!(f, "Socket<{:?}>", self.get_socket_type())
     }
 }
 
@@ -168,8 +168,7 @@ impl Socket {
 
     /// Returns an `io::Result` with the raw socket file-descriptor.
     pub fn as_raw_fd(&self) -> io::Result<RawFd> {
-        let fd = try!(self.inner.get_fd());
-        trace!("socket raw FD: {}", fd);
+        let fd = try!(self.get_ref().get_fd());
         Ok(fd)
     }
 
@@ -187,17 +186,17 @@ impl Socket {
 
     /// Bind the socket to the given address.
     pub fn bind(&self, address: &str) -> io::Result<()> {
-        self.inner.bind(address).map_err(|e| e.into())
+        self.get_ref().bind(address).map_err(|e| e.into())
     }
 
-    /// Connect the socket to the given address.
-    pub fn connect(&self, address: &str) -> io::Result<()> {
-        self.inner.connect(address).map_err(|e| e.into())
+    /// Connect a socket.
+    pub fn connect(&self, endpoint: &str) -> io::Result<()> {
+        self.get_ref().connect(endpoint).map_err(|e| e.into())
     }
 
-    /// Subscribe this socket to the given `prefix`.
-    pub fn set_subscribe(&self, prefix: &[u8]) -> io::Result<()> {
-        self.inner.set_subscribe(prefix).map_err(|e| e.into())
+    /// Disconnect a previously connected socket.
+    pub fn disconnect(&self, endpoint: &str) -> io::Result<()> {
+        self.get_ref().disconnect(endpoint).map_err(|e| e.into())
     }
 
     /// Send a message.
@@ -214,8 +213,7 @@ impl Socket {
     where
         T: zmq::Sendable,
     {
-        let r = self.inner.send(item, zmq::DONTWAIT | flags).map_err(|e| e.into());
-        r
+        self.get_ref().send(item, zmq::DONTWAIT | flags).map_err(|e| e.into())
     }
 
     /// Send a multi-part message. Takes any iterator of valid message
@@ -235,10 +233,9 @@ impl Socket {
         I: IntoIterator<Item = T>,
         T: Into<zmq::Message>,
     {
-        let r = self.inner
+        self.get_ref()
             .send_multipart(iter, zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
     /// Read a single `zmq::Message` from the socket.
@@ -252,10 +249,9 @@ impl Socket {
     /// is automatically translated to `io::ErrorKind::WouldBlock`,
     /// which you MUST handle without failing.
     pub fn recv(&self, msg: &mut zmq::Message, flags: i32) -> io::Result<()> {
-        let r = self.inner
+        self.get_ref()
             .recv(msg, zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
     /// Receive bytes into a slice. The length passed to `zmq_recv` is the length
@@ -267,10 +263,9 @@ impl Socket {
     /// is automatically translated to `io::ErrorKind::WouldBlock`,
     /// which you MUST handle without failing.
     pub fn recv_into(&self, msg: &mut [u8], flags: i32) -> io::Result<usize> {
-        let r = self.inner
+        self.get_ref()
             .recv_into(msg, zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
     /// Receive a message into a fresh `zmq::Message`.
@@ -280,10 +275,9 @@ impl Socket {
     /// is automatically translated to `io::ErrorKind::WouldBlock`,
     /// which you MUST handle without failing.
     pub fn recv_msg(&self, flags: i32) -> io::Result<zmq::Message> {
-        let r = self.inner
+        self.get_ref()
             .recv_msg(zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
     /// Receive a message as a byte vector.
@@ -293,10 +287,9 @@ impl Socket {
     /// is automatically translated to `io::ErrorKind::WouldBlock`,
     /// which you MUST handle without failing.
     pub fn recv_bytes(&self, flags: i32) -> io::Result<Vec<u8>> {
-        let r = self.inner
+        self.get_ref()
             .recv_bytes(zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
     /// Receive a `String` from the socket.
@@ -309,10 +302,9 @@ impl Socket {
     /// is automatically translated to `io::ErrorKind::WouldBlock`,
     /// which you MUST handle without failing.
     pub fn recv_string(&self, flags: i32) -> io::Result<Result<String, Vec<u8>>> {
-        let r = self.inner
+        self.get_ref()
             .recv_string(zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
     /// Receive a multipart message from the socket.
@@ -326,13 +318,12 @@ impl Socket {
     /// is automatically translated to `io::ErrorKind::WouldBlock`,
     /// which you MUST handle without failing.
     pub fn recv_multipart(&self, flags: i32) -> io::Result<Vec<Vec<u8>>> {
-        let r = self.inner
+        self.get_ref()
             .recv_multipart(zmq::DONTWAIT | flags)
-            .map_err(|e| e.into());
-        r
+            .map_err(|e| e.into())
     }
 
-    /// Get the SocketType
+    /// Return the type of this socket.
     pub fn get_socket_type(&self) -> io::Result<zmq::SocketType> {
         let r = self.get_ref().get_socket_type().map_err(|e| e.into());
         r
