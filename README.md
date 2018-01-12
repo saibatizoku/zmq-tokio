@@ -37,11 +37,15 @@ The underlying library API is still not complete.
 Justification
 -------------
 
-While it may cause controversy amongst some network developers due to its highly _non-neutral_ approach to messaging, ZeroMQ is a [fully-documented](http://zguide.zeromq.org/page:all) library that is meant to act as an _intelligent transport layer_ for messaging patterns. It's extremely portable across OS platforms, as well as across programming languages.
+ZeroMQ is a [fully-documented](http://zguide.zeromq.org/page:all) library that is meant to act as an _intelligent transport layer_ for messaging patterns. It's portable across OS platforms, as well as across programming languages.
 
 Rust's bindings for the ZeroMQ library, [rust-zmq](https://github.com/erickt/rust-zmq), wrap the C library into a very ergonomic implementation of **most** of the API.
 
-While ZeroMQ's model is asynchronous by nature, the user API states that there is a need for IO error handling, specifically for the case of `std::io::ErrorKind::WouldBlock`. Therefore, to use ZMQ sockets asynchronously, it is necessary to have some higher-level code that can enforce correct handling of non-blocking messaging. Which is what `tokio` is for. `mio` helps build the bridge that connects the synchronous with the asynchronous, by adding non-blocking compatibility, as well as a polling mechanism that is meant to be cross-platform.
+ZeroMQ's model is asynchronous by nature, however, it is handled automatically unless the `DONTWAIT` flag is specified when sending/receiving. This flag configures the socket to non-blocking mode, for which the user API states that there is a need for IO error handling, specifically for the case of `std::io::ErrorKind::WouldBlock`.
+
+So, to properly use ZMQ sockets asynchronously, it is necessary to have some higher-level code that can enforce correct handling of non-blocking messaging. In Rust, this is what `tokio` can do, with certain adaptations to the underlying ZMQ socket.
+
+These adaptions are carried out by `mio`, which helps build the bridge that connects the synchronous with the asynchronous, by adding non-blocking compatibility in the form of `std::io::Error`, as well as a polling mechanism that is meant to be cross-platform, and which is implemented via the `mio::Evented` trait. Since `rust-zmq` provides a `RawFd` reference to the ZMQ socket, and since `mio` provides the wrapper type `EventedFd`, making a ZMQ socket `mio`-compatible, is basically a matter of using the `DONTWAIT` flag on the socket, making sure that our functions and methods return `Result<_, io::Error>`, and wrap it into a new type that uses `EventedFd` to automatically make everything work for polling.
 
 Finally, `futures` in Rust, which aim to `provide a robust implementation of handling asynchronous computations, ergonomic composition and usage, and zero-cost abstractions over what would otherwise be written by hand`, are way that data is handled and processed in `tokio`.
 
