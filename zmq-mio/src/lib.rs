@@ -325,8 +325,22 @@ impl Socket {
 
     /// Return the type of this socket.
     pub fn get_socket_type(&self) -> io::Result<zmq::SocketType> {
-        let r = self.get_ref().get_socket_type().map_err(|e| e.into());
-        r
+        self.get_ref().get_socket_type().map_err(|e| e.into())
+    }
+
+    /// Return true if there are more frames of a multipart message to receive.
+    pub fn get_rcvmore(&self) -> io::Result<bool> {
+        self.get_ref().get_rcvmore().map_err(|e| e.into())
+    }
+
+    /// Subscribe this socket to the given `prefix`.
+    pub fn set_subscribe(&self, prefix: &[u8]) -> io::Result<()> {
+        self.get_ref().set_subscribe(prefix).map_err(|e| e.into())
+    }
+
+    /// Unsubscribe the underlying socket from the given prefix.
+    pub fn set_unsubscribe(&self, value: &[u8]) -> io::Result<()> {
+        self.get_ref().set_unsubscribe(value).map_err(|e| e.into())
     }
 }
 
