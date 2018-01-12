@@ -45,7 +45,7 @@ before_script:
 cache: cargo
 script:
 - |
-    travis-cargo build -- --all && travis-cargo test -- --all
+    travis-cargo build -- --all && travis-cargo test -- --all && travis-cargo --only nightly doc-upload
 env:
   global:
   - PATH=$HOME/.local/bin:$PATH
