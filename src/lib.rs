@@ -291,26 +291,26 @@ impl Socket {
     }
 
     /// Sends a type implementing `Into<Message>` as a `Future`.
-    pub fn send<T: Into<Message>>(&self, message: T) -> SendMessage {
-        SendMessage::new(self, message.into())
+    pub fn send<'a, M: Into<Message>>(&'a self, message: M) -> SendMessage<'a, Socket> {
+        SendMessage::new(self, message)
     }
 
     /// Sends a type implementing `Into<Message>` as a `Future`.
-    pub fn send_multipart<I, T>(&self, messages: I) -> SendMultipartMessage
+    pub fn send_multipart<'a, I, U>(&'a self, messages: I) -> SendMultipartMessage<'a, Socket>
     where
-        I: IntoIterator<Item = T>,
-        T: Into<Vec<u8>>,
+        I: IntoIterator<Item = U>,
+        U: Into<Vec<u8>>,
     {
         SendMultipartMessage::new(self, messages)
     }
 
     /// Returns a `Future` that resolves into a `Message`
-    pub fn recv(&self) -> ReceiveMessage {
+    pub fn recv<'a>(&'a self) -> ReceiveMessage<'a, Socket> {
         ReceiveMessage::new(self)
     }
 
     /// Returns a `Future` that resolves into a `Vec<Message>`
-    pub fn recv_multipart(&self) -> ReceiveMultipartMessage {
+    pub fn recv_multipart<'a>(&'a self) -> ReceiveMultipartMessage<'a, Socket> {
         ReceiveMultipartMessage::new(self)
     }
 
