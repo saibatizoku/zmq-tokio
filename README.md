@@ -21,8 +21,9 @@ Status
 
 [![Build Status](https://travis-ci.org/saibatizoku/zmq-tokio.svg?branch=master)](https://travis-ci.org/saibatizoku/zmq-tokio)
 
-* __zmq-tokio [documentation](https://saibatizoku.github.io/zmq-tokio/zmq_tokio/index.html)__
-* __zmq-mio [documentation](https://saibatizoku.github.io/zmq-tokio/zmq_mio/index.html)__
+* [`zmq-futures` documentation](https://saibatizoku.github.io/zmq-tokio/zmq_futures/index.html)
+* [`zmq-mio` documentation](https://saibatizoku.github.io/zmq-tokio/zmq_mio/index.html)
+* [`zmq-tokio` documentation](https://saibatizoku.github.io/zmq-tokio/zmq_tokio/index.html)
 
 
 This is the barely budding seed of providing access to
