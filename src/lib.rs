@@ -191,9 +191,9 @@ extern crate mio;
 extern crate tokio_core;
 extern crate tokio_io;
 extern crate zmq;
+extern crate zmq_futures;
 extern crate zmq_mio;
 
-pub mod future;
 
 use std::io;
 use std::io::{Read, Write};
@@ -206,7 +206,10 @@ use futures::sink::Sink;
 use tokio_core::reactor::{Handle, PollEvented};
 use tokio_io::{AsyncRead, AsyncWrite};
 
-use self::future::{ReceiveMessage, ReceiveMultipartMessage, SendMessage, SendMultipartMessage};
+use zmq::Sendable;
+use zmq_futures::{MessageSend, SendMessage, SendMultipartMessage};
+use zmq_futures::{MessageRecv, ReceiveMessage, ReceiveMultipartMessage};
+
 /// The possible socket types.
 pub use io::Error;
 pub use zmq::{Message, SocketType, SNDMORE};
