@@ -201,6 +201,7 @@ use std::io;
 use std::io::{Read, Write};
 
 use futures::Poll;
+use futures::stream::{Empty, empty};
 
 use tokio_core::reactor::{Handle, PollEvented};
 use tokio_io::{AsyncRead, AsyncWrite};
@@ -338,6 +339,32 @@ impl Socket {
     }
 }
 
+unsafe impl Send for Socket {}
+
+impl Read for Socket {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        self.io.read(buf)
+    }
+}
+
+impl Write for Socket {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.io.write(buf)
+    }
+
+    fn flush(&mut self) -> io::Result<()> {
+        Ok(())
+    }
+}
+
+impl AsyncRead for Socket {}
+
+impl AsyncWrite for Socket {
+    fn shutdown(&mut self) -> Poll<(), io::Error> {
+        Ok(().into())
+    }
+}
+
 impl MessageSend for Socket {
     fn send<T>(&self, msg: T, flags: i32) -> io::Result<()>
     where
@@ -365,28 +392,9 @@ impl MessageRecv for Socket {
     }
 }
 
-unsafe impl Send for Socket {}
-
-impl Read for Socket {
-    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
-        self.io.read(buf)
-    }
-}
-
-impl Write for Socket {
-    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
-        self.io.write(buf)
-    }
-
-    fn flush(&mut self) -> io::Result<()> {
-        Ok(())
-    }
-}
-
-impl AsyncRead for Socket {}
-
-impl AsyncWrite for Socket {
-    fn shutdown(&mut self) -> Poll<(), io::Error> {
-        Ok(().into())
+impl Listen for Socket {
+    type Stream = Empty<(), ()>;
+    fn listen(&self) -> Empty<(), ()> {
+        empty()
     }
 }
