@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `SNDMORE` static in crate `zmq_tokio`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, SNDMORE">
+    <meta name="description" content="Source to the Rust file `src/future.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
 
-    <title>zmq_tokio::SNDMORE - Rust</title>
+    <title>future.rs.html -- source</title>
 
-    <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
     
 </head>
-<body class="rustdoc static">
+<body class="rustdoc source">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -30,7 +30,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'><a href='index.html'>zmq_tokio</a></p><script>window.sidebarCurrent = {name: 'SNDMORE', ty: 'static', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        
     </nav>
 
     <nav class="sub">
@@ -44,18 +44,17 @@
         </form>
     </nav>
 
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Static <a href='index.html'>zmq_tokio</a>::<wbr><a class="static" href=''>SNDMORE</a></span><span class='out-of-band'><span id='render-detail'>
-                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                       [<span class='inner'>&#x2212;</span>]
-                   </a>
-               </span><a class='srclink' href='../src/zmq/lib.rs.html#73' title='goto source code'>[src]</a></span></h1>
-<pre class='rust static'>pub static SNDMORE: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><code> = </code><code>
-
-
-</code></pre><div class='docblock'><p>Flag for socket <code>send</code> methods that specifies that more frames of a
-multipart message will follow.</p>
-</div></section>
+    <section id='main' class="content"><pre class="line-numbers"><span id="1">1</span>
+<span id="2">2</span>
+<span id="3">3</span>
+<span id="4">4</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! Futures for ØMQ sockets.</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">zmq_futures</span>::{<span class="ident">MessageRecv</span>, <span class="ident">MessageSend</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">zmq_futures</span>::<span class="ident">future</span>::{<span class="ident">ReceiveMessage</span>, <span class="ident">ReceiveMultipartMessage</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">zmq_futures</span>::<span class="ident">future</span>::{<span class="ident">SendMessage</span>, <span class="ident">SendMultipartMessage</span>};
+</pre>
+</section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -111,10 +110,10 @@ multipart message will follow.</p>
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "zmq_tokio";
     </script>
-    <script src="../main.js"></script>
-    <script defer src="../search-index.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

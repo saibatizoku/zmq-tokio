@@ -7,11 +7,11 @@
     <meta name="description" content="API documentation for the Rust `ReceiveMessage` struct in crate `zmq_futures`.">
     <meta name="keywords" content="rust, rustlang, rust-lang, ReceiveMessage">
 
-    <title>zmq_futures::ReceiveMessage - Rust</title>
+    <title>zmq_futures::future::ReceiveMessage - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
@@ -30,7 +30,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct ReceiveMessage</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Future">Future</a></div></div><p class='location'><a href='index.html'>zmq_futures</a></p><script>window.sidebarCurrent = {name: 'ReceiveMessage', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Struct ReceiveMessage</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Future">Future</a></div></div><p class='location'><a href='../index.html'>zmq_futures</a>::<wbr><a href='index.html'>future</a></p><script>window.sidebarCurrent = {name: 'ReceiveMessage', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -45,28 +45,28 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>zmq_futures</a>::<wbr><a class="struct" href=''>ReceiveMessage</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>zmq_futures</a>::<wbr><a href='index.html'>future</a>::<wbr><a class="struct" href=''>ReceiveMessage</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/zmq_futures/recv.rs.html#46-48' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/zmq_futures/recv.rs.html#46-48' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ReceiveMessage&lt;'a, T:&nbsp;'a&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A Future that receives a <code>Message</code> asynchronously. This is returned by <code>Socket::recv</code></p>
 </div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;'a, T&gt; <a class="struct" href="../zmq_futures/struct.ReceiveMessage.html" title="struct zmq_futures::ReceiveMessage">ReceiveMessage</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../zmq_futures/trait.MessageRecv.html" title="trait zmq_futures::MessageRecv">MessageRecv</a> + 'a,&nbsp;</span></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_futures/recv.rs.html#50-57' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(socket: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'a </a>T) -&gt; <a class="struct" href="../zmq_futures/struct.ReceiveMessage.html" title="struct zmq_futures::ReceiveMessage">ReceiveMessage</a>&lt;'a, T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_futures/recv.rs.html#54-56' title='goto source code'>[src]</a></span></h4>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;'a, T&gt; <a class="struct" href="../../zmq_futures/future/struct.ReceiveMessage.html" title="struct zmq_futures::future::ReceiveMessage">ReceiveMessage</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../zmq_futures/trait.MessageRecv.html" title="trait zmq_futures::MessageRecv">MessageRecv</a> + 'a,&nbsp;</span></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/zmq_futures/recv.rs.html#50-57' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(socket: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'a </a>T) -&gt; <a class="struct" href="../../zmq_futures/future/struct.ReceiveMessage.html" title="struct zmq_futures::future::ReceiveMessage">ReceiveMessage</a>&lt;'a, T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/zmq_futures/recv.rs.html#54-56' title='goto source code'>[src]</a></span></h4>
 </div>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
-        <h3 id='impl-Future' class='impl'><span class='in-band'><code>impl&lt;'a, T&gt; <a class="trait" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html" title="trait futures::future::Future">Future</a> for <a class="struct" href="../zmq_futures/struct.ReceiveMessage.html" title="struct zmq_futures::ReceiveMessage">ReceiveMessage</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../zmq_futures/trait.MessageRecv.html" title="trait zmq_futures::MessageRecv">MessageRecv</a> + 'a,&nbsp;</span></code><a href='#impl-Future' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_futures/recv.rs.html#59-79' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='associatedtype.Item' class="type"><span id='Item.t' class='invisible'><code>type <a href='https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Item' class="type">Item</a> = <a class="struct" href="../zmq/message/struct.Message.html" title="struct zmq::message::Message">Message</a></code></span></h4>
+        <h3 id='impl-Future' class='impl'><span class='in-band'><code>impl&lt;'a, T&gt; <a class="trait" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html" title="trait futures::future::Future">Future</a> for <a class="struct" href="../../zmq_futures/future/struct.ReceiveMessage.html" title="struct zmq_futures::future::ReceiveMessage">ReceiveMessage</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../zmq_futures/trait.MessageRecv.html" title="trait zmq_futures::MessageRecv">MessageRecv</a> + 'a,&nbsp;</span></code><a href='#impl-Future' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/zmq_futures/recv.rs.html#59-79' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Item' class="type"><span id='Item.t' class='invisible'><code>type <a href='https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Item' class="type">Item</a> = <a class="struct" href="../../zmq/message/struct.Message.html" title="struct zmq::message::Message">Message</a></code></span></h4>
 <div class='docblock'><p>The type of value that this future will resolved with if it is successful. <a href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Item">Read more</a></p>
 </div><h4 id='associatedtype.Error' class="type"><span id='Error.t' class='invisible'><code>type <a href='https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Error' class="type">Error</a> = <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a></code></span></h4>
 <div class='docblock'><p>The type of error that this future will resolve with if it fails in a normal fashion. <a href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Error">Read more</a></p>
-</div><h4 id='method.poll' class="method"><span id='poll.v' class='invisible'><code>fn <a href='https://docs.rs/futures/0.1/futures/future/trait.Future.html#tymethod.poll' class='fnname'>poll</a>(&amp;mut self) -&gt; <a class="type" href="https://docs.rs/futures/0.1/futures/poll/type.Poll.html" title="type futures::poll::Poll">Poll</a>&lt;Self::<a class="type" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Item" title="type futures::future::Future::Item">Item</a>, Self::<a class="type" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Error" title="type futures::future::Future::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_futures/recv.rs.html#66-78' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.poll' class="method"><span id='poll.v' class='invisible'><code>fn <a href='https://docs.rs/futures/0.1/futures/future/trait.Future.html#tymethod.poll' class='fnname'>poll</a>(&amp;mut self) -&gt; <a class="type" href="https://docs.rs/futures/0.1/futures/poll/type.Poll.html" title="type futures::poll::Poll">Poll</a>&lt;Self::<a class="type" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Item" title="type futures::future::Future::Item">Item</a>, Self::<a class="type" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Error" title="type futures::future::Future::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/zmq_futures/recv.rs.html#66-78' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Query this future to see if its value has become available, registering interest if it is not. <a href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#tymethod.poll">Read more</a></p>
 </div><h4 id='method.wait' class="method"><span id='wait.v' class='invisible'><code>fn <a href='https://docs.rs/futures/0.1/futures/future/trait.Future.html#method.wait' class='fnname'>wait</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self::<a class="type" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Item" title="type futures::future::Future::Item">Item</a>, Self::<a class="type" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#associatedtype.Error" title="type futures::future::Future::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='https://docs.rs/futures/0.1/src/futures/future/mod.rs.html#296-300' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Block the current thread until this future is resolved. <a href="https://docs.rs/futures/0.1/futures/future/trait.Future.html#method.wait">Read more</a></p>
@@ -164,10 +164,10 @@
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "zmq_futures";
     </script>
-    <script src="../main.js"></script>
-    <script defer src="../search-index.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

@@ -704,6 +704,7 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">zmq_futures</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">zmq_mio</span>;
 
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">future</span>;
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="ident">Read</span>, <span class="ident">Write</span>};
@@ -717,14 +718,13 @@
 <span class="kw">use</span> <span class="ident">tokio_io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>};
 
 <span class="kw">use</span> <span class="ident">zmq</span>::<span class="ident">Sendable</span>;
-<span class="kw">use</span> <span class="ident">zmq_futures</span>::{<span class="ident">MessageSend</span>, <span class="ident">SendMessage</span>, <span class="ident">SendMultipartMessage</span>};
-<span class="kw">use</span> <span class="ident">zmq_futures</span>::{<span class="ident">MessageRecv</span>, <span class="ident">ReceiveMessage</span>, <span class="ident">ReceiveMultipartMessage</span>};
 
-<span class="doccomment">/// The possible socket types.</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">io</span>::<span class="ident">Error</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">zmq</span>::{<span class="ident">Message</span>, <span class="ident">SocketType</span>, <span class="ident">SNDMORE</span>};
+<span class="kw">use</span> <span class="self">self</span>::<span class="ident">future</span>::<span class="kw-2">*</span>;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">SocketType</span>::{<span class="ident">DEALER</span>, <span class="ident">PAIR</span>, <span class="ident">PUB</span>, <span class="ident">PULL</span>, <span class="ident">PUSH</span>, <span class="ident">REP</span>, <span class="ident">REQ</span>, <span class="ident">ROUTER</span>, <span class="ident">STREAM</span>, <span class="ident">SUB</span>, <span class="ident">XPUB</span>, <span class="ident">XSUB</span>};
+
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">zmq</span>::{<span class="ident">Message</span>, <span class="ident">SocketType</span>};
+
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SocketType</span>::{<span class="ident">DEALER</span>, <span class="ident">PAIR</span>, <span class="ident">PUB</span>, <span class="ident">PULL</span>, <span class="ident">PUSH</span>, <span class="ident">REP</span>, <span class="ident">REQ</span>, <span class="ident">ROUTER</span>, <span class="ident">STREAM</span>, <span class="ident">SUB</span>, <span class="ident">XPUB</span>, <span class="ident">XSUB</span>};
 
 <span class="doccomment">/// Wrapper for `zmq::Context`.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>)]</span>
