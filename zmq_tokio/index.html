@@ -30,7 +30,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Crate zmq_tokio</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#statics">Statics</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'zmq_tokio', ty: 'mod', relpath: '../'};</script></div>
+        <p class='location'>Crate zmq_tokio</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#statics">Statics</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'zmq_tokio', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
     <nav class="sub">
@@ -49,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/zmq_tokio/lib.rs.html#1-433' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/zmq_tokio/lib.rs.html#1-463' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id='Ømq-zeromq-for-tokio' class='section-header'><a href='#Ømq-zeromq-for-tokio'>ØMQ (ZeroMQ) for tokio</a></h1>
 <p>Run ØMQ sockets using <code>tokio</code> reactors, futures, etc.</p>
@@ -224,15 +224,7 @@ Save goes for receiving.</p>
     ::<span class="ident">std</span>::<span class="ident">process</span>::<span class="ident">exit</span>(<span class="number">0</span>);
 }</pre>
 </div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">DEALER</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PAIR</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PUB</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PULL</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PUSH</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">REP</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">REQ</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">ROUTER</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">STREAM</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">SUB</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">XPUB</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">XSUB</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="future/index.html"
-                                  title='mod zmq_tokio::future'>future</a></td>
-                           <td class='docblock-short'>
-                                <p>Futures for ØMQ sockets.</p>
-                           </td>
-                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">DEALER</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PAIR</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PUB</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PULL</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PUSH</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">REP</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">REQ</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">ROUTER</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">STREAM</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">SUB</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">XPUB</a>;</code></td></tr><tr><td><code>pub use SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">XSUB</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.Context.html"

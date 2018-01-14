@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Error` enum in crate `zmq`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Error">
+
+    <title>zmq::Error - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Enum Error</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.EACCES">EACCES</a><a href="#variant.EADDRINUSE">EADDRINUSE</a><a href="#variant.EAGAIN">EAGAIN</a><a href="#variant.EBUSY">EBUSY</a><a href="#variant.ECONNREFUSED">ECONNREFUSED</a><a href="#variant.EFAULT">EFAULT</a><a href="#variant.EINTR">EINTR</a><a href="#variant.EHOSTUNREACH">EHOSTUNREACH</a><a href="#variant.EINPROGRESS">EINPROGRESS</a><a href="#variant.EINVAL">EINVAL</a><a href="#variant.EMFILE">EMFILE</a><a href="#variant.EMSGSIZE">EMSGSIZE</a><a href="#variant.ENAMETOOLONG">ENAMETOOLONG</a><a href="#variant.ENODEV">ENODEV</a><a href="#variant.ENOENT">ENOENT</a><a href="#variant.ENOMEM">ENOMEM</a><a href="#variant.ENOTCONN">ENOTCONN</a><a href="#variant.ENOTSOCK">ENOTSOCK</a><a href="#variant.EPROTO">EPROTO</a><a href="#variant.EPROTONOSUPPORT">EPROTONOSUPPORT</a><a href="#variant.ENOTSUP">ENOTSUP</a><a href="#variant.ENOBUFS">ENOBUFS</a><a href="#variant.ENETDOWN">ENETDOWN</a><a href="#variant.EADDRNOTAVAIL">EADDRNOTAVAIL</a><a href="#variant.EFSM">EFSM</a><a href="#variant.ENOCOMPATPROTO">ENOCOMPATPROTO</a><a href="#variant.ETERM">ETERM</a><a href="#variant.EMTHREAD">EMTHREAD</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.to_raw">to_raw</a><a href="#method.from_raw">from_raw</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Eq">Eq</a><a href="#impl-PartialEq">PartialEq</a><a href="#impl-Copy">Copy</a><a href="#impl-Error">Error</a><a href="#impl-Display">Display</a><a href="#impl-Debug">Debug</a><a href="#impl-From%3CError%3E">From&lt;Error&gt;</a></div></div><p class='location'><a href='index.html'>zmq</a></p><script>window.sidebarCurrent = {name: 'Error', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>zmq</a>::<wbr><a class="enum" href=''>Error</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/zmq/lib.rs.html#163-194' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Error {
+    EACCES,
+    EADDRINUSE,
+    EAGAIN,
+    EBUSY,
+    ECONNREFUSED,
+    EFAULT,
+    EINTR,
+    EHOSTUNREACH,
+    EINPROGRESS,
+    EINVAL,
+    EMFILE,
+    EMSGSIZE,
+    ENAMETOOLONG,
+    ENODEV,
+    ENOENT,
+    ENOMEM,
+    ENOTCONN,
+    ENOTSOCK,
+    EPROTO,
+    EPROTONOSUPPORT,
+    ENOTSUP,
+    ENOBUFS,
+    ENETDOWN,
+    EADDRNOTAVAIL,
+    EFSM,
+    ENOCOMPATPROTO,
+    ETERM,
+    EMTHREAD,
+}</pre><div class='docblock'><p>An error returned by a 0MQ API function.</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.EACCES" class="variant small-section-header"><a href="#variant.EACCES" class="anchor field"></a><span id='EACCES.v' class='invisible'><code>EACCES</code></span></span><span id="variant.EADDRINUSE" class="variant small-section-header"><a href="#variant.EADDRINUSE" class="anchor field"></a><span id='EADDRINUSE.v' class='invisible'><code>EADDRINUSE</code></span></span><span id="variant.EAGAIN" class="variant small-section-header"><a href="#variant.EAGAIN" class="anchor field"></a><span id='EAGAIN.v' class='invisible'><code>EAGAIN</code></span></span><span id="variant.EBUSY" class="variant small-section-header"><a href="#variant.EBUSY" class="anchor field"></a><span id='EBUSY.v' class='invisible'><code>EBUSY</code></span></span><span id="variant.ECONNREFUSED" class="variant small-section-header"><a href="#variant.ECONNREFUSED" class="anchor field"></a><span id='ECONNREFUSED.v' class='invisible'><code>ECONNREFUSED</code></span></span><span id="variant.EFAULT" class="variant small-section-header"><a href="#variant.EFAULT" class="anchor field"></a><span id='EFAULT.v' class='invisible'><code>EFAULT</code></span></span><span id="variant.EINTR" class="variant small-section-header"><a href="#variant.EINTR" class="anchor field"></a><span id='EINTR.v' class='invisible'><code>EINTR</code></span></span><span id="variant.EHOSTUNREACH" class="variant small-section-header"><a href="#variant.EHOSTUNREACH" class="anchor field"></a><span id='EHOSTUNREACH.v' class='invisible'><code>EHOSTUNREACH</code></span></span><span id="variant.EINPROGRESS" class="variant small-section-header"><a href="#variant.EINPROGRESS" class="anchor field"></a><span id='EINPROGRESS.v' class='invisible'><code>EINPROGRESS</code></span></span><span id="variant.EINVAL" class="variant small-section-header"><a href="#variant.EINVAL" class="anchor field"></a><span id='EINVAL.v' class='invisible'><code>EINVAL</code></span></span><span id="variant.EMFILE" class="variant small-section-header"><a href="#variant.EMFILE" class="anchor field"></a><span id='EMFILE.v' class='invisible'><code>EMFILE</code></span></span><span id="variant.EMSGSIZE" class="variant small-section-header"><a href="#variant.EMSGSIZE" class="anchor field"></a><span id='EMSGSIZE.v' class='invisible'><code>EMSGSIZE</code></span></span><span id="variant.ENAMETOOLONG" class="variant small-section-header"><a href="#variant.ENAMETOOLONG" class="anchor field"></a><span id='ENAMETOOLONG.v' class='invisible'><code>ENAMETOOLONG</code></span></span><span id="variant.ENODEV" class="variant small-section-header"><a href="#variant.ENODEV" class="anchor field"></a><span id='ENODEV.v' class='invisible'><code>ENODEV</code></span></span><span id="variant.ENOENT" class="variant small-section-header"><a href="#variant.ENOENT" class="anchor field"></a><span id='ENOENT.v' class='invisible'><code>ENOENT</code></span></span><span id="variant.ENOMEM" class="variant small-section-header"><a href="#variant.ENOMEM" class="anchor field"></a><span id='ENOMEM.v' class='invisible'><code>ENOMEM</code></span></span><span id="variant.ENOTCONN" class="variant small-section-header"><a href="#variant.ENOTCONN" class="anchor field"></a><span id='ENOTCONN.v' class='invisible'><code>ENOTCONN</code></span></span><span id="variant.ENOTSOCK" class="variant small-section-header"><a href="#variant.ENOTSOCK" class="anchor field"></a><span id='ENOTSOCK.v' class='invisible'><code>ENOTSOCK</code></span></span><span id="variant.EPROTO" class="variant small-section-header"><a href="#variant.EPROTO" class="anchor field"></a><span id='EPROTO.v' class='invisible'><code>EPROTO</code></span></span><span id="variant.EPROTONOSUPPORT" class="variant small-section-header"><a href="#variant.EPROTONOSUPPORT" class="anchor field"></a><span id='EPROTONOSUPPORT.v' class='invisible'><code>EPROTONOSUPPORT</code></span></span><span id="variant.ENOTSUP" class="variant small-section-header"><a href="#variant.ENOTSUP" class="anchor field"></a><span id='ENOTSUP.v' class='invisible'><code>ENOTSUP</code></span></span><span id="variant.ENOBUFS" class="variant small-section-header"><a href="#variant.ENOBUFS" class="anchor field"></a><span id='ENOBUFS.v' class='invisible'><code>ENOBUFS</code></span></span><span id="variant.ENETDOWN" class="variant small-section-header"><a href="#variant.ENETDOWN" class="anchor field"></a><span id='ENETDOWN.v' class='invisible'><code>ENETDOWN</code></span></span><span id="variant.EADDRNOTAVAIL" class="variant small-section-header"><a href="#variant.EADDRNOTAVAIL" class="anchor field"></a><span id='EADDRNOTAVAIL.v' class='invisible'><code>EADDRNOTAVAIL</code></span></span><span id="variant.EFSM" class="variant small-section-header"><a href="#variant.EFSM" class="anchor field"></a><span id='EFSM.v' class='invisible'><code>EFSM</code></span></span><span id="variant.ENOCOMPATPROTO" class="variant small-section-header"><a href="#variant.ENOCOMPATPROTO" class="anchor field"></a><span id='ENOCOMPATPROTO.v' class='invisible'><code>ENOCOMPATPROTO</code></span></span><span id="variant.ETERM" class="variant small-section-header"><a href="#variant.ETERM" class="anchor field"></a><span id='ETERM.v' class='invisible'><code>ETERM</code></span></span><span id="variant.EMTHREAD" class="variant small-section-header"><a href="#variant.EMTHREAD" class="anchor field"></a><span id='EMTHREAD.v' class='invisible'><code>EMTHREAD</code></span></span>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#198-254' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.to_raw' class="method"><span id='to_raw.v' class='invisible'><code>pub fn <a href='#method.to_raw' class='fnname'>to_raw</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#199-201' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.from_raw' class="method"><span id='from_raw.v' class='invisible'><code>pub fn <a href='#method.from_raw' class='fnname'>from_raw</a>(raw: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#203-253' title='goto source code'>[src]</a></span></h4>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#162' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#162' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#162' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#162' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#162' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Rhs) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cmp.rs.html#121' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#196' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Error' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/std/error/trait.Error.html" title="trait std::error::Error">Error</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-Error' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#256-265' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.description' class="method"><span id='description.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#tymethod.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#257-264' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>A short description of the error. <a href="https://doc.rust-lang.org/nightly/std/error/trait.Error.html#tymethod.description">Read more</a></p>
+</div><h4 id='method.cause' class="method"><span id='cause.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#method.cause' class='fnname'>cause</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="trait" href="https://doc.rust-lang.org/nightly/std/error/trait.Error.html" title="trait std::error::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/std/error.rs.html#154' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>The lower-level cause of this error, if any. <a href="https://doc.rust-lang.org/nightly/std/error/trait.Error.html#method.cause">Read more</a></p>
+</div></div><h3 id='impl-Display' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-Display' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#267-276' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#268-275' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#278-287' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt-1' class="method"><span id='fmt.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#280-286' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Return the error string for an error.</p>
+</div></div><h3 id='impl-From%3CError%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a>&gt; for <a class="struct" href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html" title="struct std::io::error::Error">Error</a></code><a href='#impl-From%3CError%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#289-311' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(error: <a class="enum" href="../zmq/enum.Error.html" title="enum zmq::Error">Error</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#290-310' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "zmq";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

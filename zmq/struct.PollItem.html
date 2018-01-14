@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `PollItem` struct in crate `zmq`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, PollItem">
+
+    <title>zmq::PollItem - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Struct PollItem</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.from_fd">from_fd</a><a href="#method.set_events">set_events</a><a href="#method.get_revents">get_revents</a><a href="#method.is_readable">is_readable</a><a href="#method.is_writable">is_writable</a><a href="#method.is_error">is_error</a></div></div><p class='location'><a href='index.html'>zmq</a></p><script>window.sidebarCurrent = {name: 'PollItem', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>zmq</a>::<wbr><a class="struct" href=''>PollItem</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/zmq/lib.rs.html#952-958' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C)]
+</div>pub struct PollItem&lt;'a&gt; { /* fields omitted */ }</pre><div class='docblock'><p>Represents a handle that can be <code>poll()</code>ed.</p>
+
+<p>This is either a reference to a 0MQ socket, or a standard socket.
+Apart from that it contains the requested event mask, and is updated
+with the occurred events after <code>poll()</code> finishes.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../zmq/struct.PollItem.html" title="struct zmq::PollItem">PollItem</a>&lt;'a&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#960-998' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_fd' class="method"><span id='from_fd.v' class='invisible'><code>pub fn <a href='#method.from_fd' class='fnname'>from_fd</a>(fd: <a class="type" href="https://doc.rust-lang.org/nightly/std/sys/unix/ext/io/type.RawFd.html" title="type std::sys::unix::ext::io::RawFd">RawFd</a>, events: <a class="struct" href="../zmq/struct.PollEvents.html" title="struct zmq::PollEvents">PollEvents</a>) -&gt; <a class="struct" href="../zmq/struct.PollItem.html" title="struct zmq::PollItem">PollItem</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#963-971' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Construct a PollItem from a non-0MQ socket, given by its file
+descriptor and the events that should be polled.</p>
+</div><h4 id='method.set_events' class="method"><span id='set_events.v' class='invisible'><code>pub fn <a href='#method.set_events' class='fnname'>set_events</a>(&amp;mut self, events: <a class="struct" href="../zmq/struct.PollEvents.html" title="struct zmq::PollEvents">PollEvents</a>)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#974-976' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Change the events to wait for.</p>
+</div><h4 id='method.get_revents' class="method"><span id='get_revents.v' class='invisible'><code>pub fn <a href='#method.get_revents' class='fnname'>get_revents</a>(&amp;self) -&gt; <a class="struct" href="../zmq/struct.PollEvents.html" title="struct zmq::PollEvents">PollEvents</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#979-981' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Retrieve the events that occurred for this handle.</p>
+</div><h4 id='method.is_readable' class="method"><span id='is_readable.v' class='invisible'><code>pub fn <a href='#method.is_readable' class='fnname'>is_readable</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#984-986' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns true if the polled socket has messages ready to receive.</p>
+</div><h4 id='method.is_writable' class="method"><span id='is_writable.v' class='invisible'><code>pub fn <a href='#method.is_writable' class='fnname'>is_writable</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#990-992' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns true if the polled socket can accept messages to be sent
+without blocking.</p>
+</div><h4 id='method.is_error' class="method"><span id='is_error.v' class='invisible'><code>pub fn <a href='#method.is_error' class='fnname'>is_error</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq/lib.rs.html#995-997' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns true if the polled socket encountered an error condition.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "zmq";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

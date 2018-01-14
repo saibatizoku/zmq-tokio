@@ -477,6 +477,36 @@
 <span id="431">431</span>
 <span id="432">432</span>
 <span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
+<span id="455">455</span>
+<span id="456">456</span>
+<span id="457">457</span>
+<span id="458">458</span>
+<span id="459">459</span>
+<span id="460">460</span>
+<span id="461">461</span>
+<span id="462">462</span>
+<span id="463">463</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! ØMQ (ZeroMQ) for tokio</span>
 <span class="doccomment">//! ======================</span>
@@ -671,9 +701,9 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">tokio_core</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">tokio_io</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">zmq</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">zmq_futures</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">zmq_mio</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">future</span>;
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="ident">Read</span>, <span class="ident">Write</span>};
@@ -686,7 +716,10 @@
 <span class="kw">use</span> <span class="ident">tokio_core</span>::<span class="ident">reactor</span>::{<span class="ident">Handle</span>, <span class="ident">PollEvented</span>};
 <span class="kw">use</span> <span class="ident">tokio_io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>};
 
-<span class="kw">use</span> <span class="self">self</span>::<span class="ident">future</span>::{<span class="ident">ReceiveMessage</span>, <span class="ident">ReceiveMultipartMessage</span>, <span class="ident">SendMessage</span>, <span class="ident">SendMultipartMessage</span>};
+<span class="kw">use</span> <span class="ident">zmq</span>::<span class="ident">Sendable</span>;
+<span class="kw">use</span> <span class="ident">zmq_futures</span>::{<span class="ident">MessageSend</span>, <span class="ident">SendMessage</span>, <span class="ident">SendMultipartMessage</span>};
+<span class="kw">use</span> <span class="ident">zmq_futures</span>::{<span class="ident">MessageRecv</span>, <span class="ident">ReceiveMessage</span>, <span class="ident">ReceiveMultipartMessage</span>};
+
 <span class="doccomment">/// The possible socket types.</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">io</span>::<span class="ident">Error</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">zmq</span>::{<span class="ident">Message</span>, <span class="ident">SocketType</span>, <span class="ident">SNDMORE</span>};
@@ -768,26 +801,26 @@
     }
 
     <span class="doccomment">/// Sends a type implementing `Into&lt;Message&gt;` as a `Future`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Message</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">message</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">SendMessage</span> {
-        <span class="ident">SendMessage</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">message</span>.<span class="ident">into</span>())
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Message</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>, <span class="ident">message</span>: <span class="ident">M</span>) <span class="op">-&gt;</span> <span class="ident">SendMessage</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Socket</span><span class="op">&gt;</span> {
+        <span class="ident">SendMessage</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">message</span>)
     }
 
     <span class="doccomment">/// Sends a type implementing `Into&lt;Message&gt;` as a `Future`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_multipart</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">messages</span>: <span class="ident">I</span>) <span class="op">-&gt;</span> <span class="ident">SendMultipartMessage</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_multipart</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span>, <span class="ident">U</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>, <span class="ident">messages</span>: <span class="ident">I</span>) <span class="op">-&gt;</span> <span class="ident">SendMultipartMessage</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Socket</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
-        <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span>,
+        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">U</span><span class="op">&gt;</span>,
+        <span class="ident">U</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span>,
     {
         <span class="ident">SendMultipartMessage</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">messages</span>)
     }
 
     <span class="doccomment">/// Returns a `Future` that resolves into a `Message`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReceiveMessage</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recv</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReceiveMessage</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Socket</span><span class="op">&gt;</span> {
         <span class="ident">ReceiveMessage</span>::<span class="ident">new</span>(<span class="self">self</span>)
     }
 
     <span class="doccomment">/// Returns a `Future` that resolves into a `Vec&lt;Message&gt;`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recv_multipart</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReceiveMultipartMessage</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recv_multipart</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReceiveMultipartMessage</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Socket</span><span class="op">&gt;</span> {
         <span class="ident">ReceiveMultipartMessage</span>::<span class="ident">new</span>(<span class="self">self</span>)
     }
 
@@ -813,6 +846,33 @@
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">framed</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SocketFramed</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="ident">SocketFramed</span>::<span class="ident">new</span>(<span class="self">self</span>)
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">MessageSend</span> <span class="kw">for</span> <span class="ident">Socket</span> {
+    <span class="kw">fn</span> <span class="ident">send</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">msg</span>: <span class="ident">T</span>, <span class="ident">flags</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
+    <span class="kw">where</span>
+        <span class="ident">T</span>: <span class="ident">Sendable</span>,
+    {
+        <span class="self">self</span>.<span class="ident">get_ref</span>().<span class="ident">send</span>(<span class="ident">msg</span>, <span class="ident">flags</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">into</span>())
+    }
+    <span class="kw">fn</span> <span class="ident">send_multipart</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">iter</span>: <span class="ident">I</span>, <span class="ident">flags</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
+    <span class="kw">where</span>
+        <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>,
+        <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Message</span><span class="op">&gt;</span>,
+    {
+        <span class="self">self</span>.<span class="ident">get_ref</span>()
+            .<span class="ident">send_multipart</span>(<span class="ident">iter</span>, <span class="ident">flags</span>)
+            .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">into</span>())
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">MessageRecv</span> <span class="kw">for</span> <span class="ident">Socket</span> {
+    <span class="kw">fn</span> <span class="ident">recv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Message</span>, <span class="ident">flags</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">get_ref</span>().<span class="ident">recv</span>(<span class="ident">msg</span>, <span class="ident">flags</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">into</span>())
+    }
+    <span class="kw">fn</span> <span class="ident">recv_multipart</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flags</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">get_ref</span>().<span class="ident">recv_multipart</span>(<span class="ident">flags</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">into</span>())
     }
 }
 
