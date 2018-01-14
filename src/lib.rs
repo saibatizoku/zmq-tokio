@@ -339,6 +339,33 @@ impl Socket {
     }
 }
 
+impl MessageSend for Socket {
+    fn send<T>(&self, msg: T, flags: i32) -> io::Result<()>
+    where
+        T: Sendable,
+    {
+        self.get_ref().send(msg, flags).map_err(|e| e.into())
+    }
+    fn send_multipart<I, T>(&self, iter: I, flags: i32) -> io::Result<()>
+    where
+        I: IntoIterator<Item = T>,
+        T: Into<Message>,
+    {
+        self.get_ref()
+            .send_multipart(iter, flags)
+            .map_err(|e| e.into())
+    }
+}
+
+impl MessageRecv for Socket {
+    fn recv(&self, msg: &mut Message, flags: i32) -> io::Result<()> {
+        self.get_ref().recv(msg, flags).map_err(|e| e.into())
+    }
+    fn recv_multipart(&self, flags: i32) -> io::Result<Vec<Vec<u8>>> {
+        self.get_ref().recv_multipart(flags).map_err(|e| e.into())
+    }
+}
+
 unsafe impl Send for Socket {}
 
 impl Read for Socket {
