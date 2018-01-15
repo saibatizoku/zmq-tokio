@@ -384,9 +384,29 @@ impl MessageSend for Socket {
 }
 
 impl MessageRecv for Socket {
+    fn get_rcvmore(&self) -> io::Result<bool> {
+        self.get_ref().get_rcvmore().map_err(|e| e.into())
+    }
+
     fn recv(&self, msg: &mut Message, flags: i32) -> io::Result<()> {
         self.get_ref().recv(msg, flags).map_err(|e| e.into())
     }
+    fn recv_into(&self, buf: &mut [u8], flags: i32) -> io::Result<usize> {
+        self.get_ref().recv_into(buf, flags).map_err(|e| e.into())
+    }
+
+    fn recv_msg(&self, flags: i32) -> io::Result<Message> {
+        self.get_ref().recv_msg(flags).map_err(|e| e.into())
+    }
+
+    fn recv_bytes(&self, flags: i32) -> io::Result<Vec<u8>> {
+        self.get_ref().recv_bytes(flags).map_err(|e| e.into())
+    }
+
+    fn recv_string(&self, flags: i32) -> io::Result<Result<String, Vec<u8>>> {
+        self.get_ref().recv_string(flags).map_err(|e| e.into())
+    }
+
     fn recv_multipart(&self, flags: i32) -> io::Result<Vec<Vec<u8>>> {
         self.get_ref().recv_multipart(flags).map_err(|e| e.into())
     }
