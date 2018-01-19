@@ -19,7 +19,7 @@ This crate uses [rust-zmq](https://github.com/erickt/rust-zmq)'s bindings.
 Status
 ------
 
-[![Build Status](https://travis-ci.org/saibatizoku/zmq-tokio.svg?branch=master)](https://travis-ci.org/saibatizoku/zmq-tokio)
+[![Build Status-dev](https://travis-ci.org/saibatizoku/zmq-tokio.svg?branch=saiba-dev)](https://travis-ci.org/saibatizoku/zmq-tokio)
 
 * [`zmq-futures` documentation](https://saibatizoku.github.io/zmq-tokio/zmq_futures/index.html)
 * [`zmq-mio` documentation](https://saibatizoku.github.io/zmq-tokio/zmq_mio/index.html)
