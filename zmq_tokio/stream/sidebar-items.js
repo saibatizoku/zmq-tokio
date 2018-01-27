@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["MessageStream","Single-message stream for sockets."],["MultipartMessageStream","Single-message stream for sockets."]]});
+initSidebarItems({"struct":[["MessageStream","Single-message stream for sockets."],["MultipartMessageStream","Multipart-message stream for sockets."]]});
