@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["future","Futures for ØMQ sockets."]],"trait":[["MessageRecv","Receives simple and multipart `Message`s."],["MessageSend","Sends simple and multipart `Message`s."]]});

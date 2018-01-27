@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SocketRecv` trait in crate `zmq_tokio`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SocketRecv">
+
+    <title>zmq_tokio::SocketRecv - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Trait SocketRecv</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.get_rcvmore">get_rcvmore</a><a href="#tymethod.recv">recv</a><a href="#tymethod.recv_into">recv_into</a><a href="#tymethod.recv_msg">recv_msg</a><a href="#tymethod.recv_bytes">recv_bytes</a><a href="#tymethod.recv_string">recv_string</a><a href="#tymethod.recv_multipart">recv_multipart</a></div><a class="sidebar-title" href="#foreign-impls">Implementations on Foreign Types</a><div class="sidebar-links"><a href="#impl-SocketRecv">PollEvented&lt;Socket&gt;</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='index.html'>zmq_tokio</a></p><script>window.sidebarCurrent = {name: 'SocketRecv', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>zmq_tokio</a>::<wbr><a class="trait" href=''>SocketRecv</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/zmq_tokio/lib.rs.html#455-486' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait SocketRecv {
+    fn <a href='#tymethod.get_rcvmore' class='fnname'>get_rcvmore</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.recv' class='fnname'>recv</a>(&amp;self, _: &amp;mut <a class="struct" href="../zmq_tokio/struct.Message.html" title="struct zmq_tokio::Message">Message</a>, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.recv_into' class='fnname'>recv_into</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.recv_msg' class='fnname'>recv_msg</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="../zmq_tokio/struct.Message.html" title="struct zmq_tokio::Message">Message</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.recv_bytes' class='fnname'>recv_bytes</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.recv_string' class='fnname'>recv_string</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.recv_multipart' class='fnname'>recv_multipart</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;&gt;;
+}</pre><div class='docblock'><p>API methods for receiving messages with sockets.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.get_rcvmore' class='method'><span id='get_rcvmore.v' class='invisible'><code>fn <a href='#tymethod.get_rcvmore' class='fnname'>get_rcvmore</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h3><div class='docblock'><p>Return true if there are more frames of a multipart message to receive.</p>
+</div><h3 id='tymethod.recv' class='method'><span id='recv.v' class='invisible'><code>fn <a href='#tymethod.recv' class='fnname'>recv</a>(&amp;self, _: &amp;mut <a class="struct" href="../zmq_tokio/struct.Message.html" title="struct zmq_tokio::Message">Message</a>, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></span></h3><div class='docblock'><p>Receive a message into a <code>Message</code>. The length passed to <code>zmq_msg_recv</code> is the length
+of the buffer.</p>
+</div><h3 id='tymethod.recv_into' class='method'><span id='recv_into.v' class='invisible'><code>fn <a href='#tymethod.recv_into' class='fnname'>recv_into</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</code></span></h3><div class='docblock'><p>Receive bytes into a slice. The length passed to <code>zmq_recv</code> is the length of the slice. The
+return value is the number of bytes in the message, which may be larger than the length of
+the slice, indicating truncation.</p>
+</div><h3 id='tymethod.recv_msg' class='method'><span id='recv_msg.v' class='invisible'><code>fn <a href='#tymethod.recv_msg' class='fnname'>recv_msg</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="../zmq_tokio/struct.Message.html" title="struct zmq_tokio::Message">Message</a>&gt;</code></span></h3><div class='docblock'><p>Receive a message into a fresh <code>Message</code>.</p>
+</div><h3 id='tymethod.recv_bytes' class='method'><span id='recv_bytes.v' class='invisible'><code>fn <a href='#tymethod.recv_bytes' class='fnname'>recv_bytes</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;</code></span></h3><div class='docblock'><p>Receive a message as a byte vector.</p>
+</div><h3 id='tymethod.recv_string' class='method'><span id='recv_string.v' class='invisible'><code>fn <a href='#tymethod.recv_string' class='fnname'>recv_string</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;&gt;</code></span></h3><div class='docblock'><p>Receive a <code>String</code> from the socket.</p>
+
+<p>If the received message is not valid UTF-8, it is returned as the original <code>Vec</code> in the <code>Err</code>
+part of the inner result.</p>
+</div><h3 id='tymethod.recv_multipart' class='method'><span id='recv_multipart.v' class='invisible'><code>fn <a href='#tymethod.recv_multipart' class='fnname'>recv_multipart</a>(&amp;self, _: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;&gt;</code></span></h3><div class='docblock'><p>Receive a multipart message from the socket.</p>
+
+<p>Note that this will allocate a new vector for each message part; for many applications it
+will be possible to process the different parts sequentially and reuse allocations that
+way.</p>
+</div></div>
+                <h2 id='foreign-impls' class='small-section-header'>
+                  Implementations on Foreign Types<a href='#foreign-impls' class='anchor'></a>
+                </h2>
+            <h3 id='impl-SocketRecv' class='impl'><span class='in-band'><code>impl <a class="trait" href="../zmq_tokio/trait.SocketRecv.html" title="trait zmq_tokio::SocketRecv">SocketRecv</a> for <a class="struct" href="https://docs.rs/tokio-core/0.1/tokio_core/reactor/poll_evented/struct.PollEvented.html" title="struct tokio_core::reactor::poll_evented::PollEvented">PollEvented</a>&lt;Socket&gt;</code><a href='#impl-SocketRecv' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#48-136' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>This implementation uses <code>PollEvented&lt;_&gt;</code> polling mechanism to properly receive messages with
+tokio.</p>
+</div><span class='docblock autohide'><div class='impl-items'><h4 id='method.get_rcvmore' class="method"><span id='get_rcvmore.v-1' class='invisible'><code>fn <a href='#method.get_rcvmore' class='fnname'>get_rcvmore</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#50-53' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Return true if there are more frames of a multipart message to receive.</p>
+</div><h4 id='method.recv' class="method"><span id='recv.v-1' class='invisible'><code>fn <a href='#method.recv' class='fnname'>recv</a>(&amp;self, buf: &amp;mut <a class="struct" href="../zmq_tokio/struct.Message.html" title="struct zmq_tokio::Message">Message</a>, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#57-66' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Receive a message into a <code>Message</code>. The length passed to <code>zmq_msg_recv</code> is the length
+of the buffer.</p>
+</div><h4 id='method.recv_into' class="method"><span id='recv_into.v-1' class='invisible'><code>fn <a href='#method.recv_into' class='fnname'>recv_into</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#71-80' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Receive bytes into a slice. The length passed to <code>zmq_recv</code> is the length of the slice. The
+return value is the number of bytes in the message, which may be larger than the length of
+the slice, indicating truncation.</p>
+</div><h4 id='method.recv_msg' class="method"><span id='recv_msg.v-1' class='invisible'><code>fn <a href='#method.recv_msg' class='fnname'>recv_msg</a>(&amp;self, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="../zmq_tokio/struct.Message.html" title="struct zmq_tokio::Message">Message</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#83-92' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Receive a message into a fresh <code>Message</code>.</p>
+</div><h4 id='method.recv_bytes' class="method"><span id='recv_bytes.v-1' class='invisible'><code>fn <a href='#method.recv_bytes' class='fnname'>recv_bytes</a>(&amp;self, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#95-104' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Receive a message as a byte vector.</p>
+</div><h4 id='method.recv_string' class="method"><span id='recv_string.v-1' class='invisible'><code>fn <a href='#method.recv_string' class='fnname'>recv_string</a>(&amp;self, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#110-119' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Receive a <code>String</code> from the socket.</p>
+
+<p>If the received message is not valid UTF-8, it is returned as the original <code>Vec</code> in the <code>Err</code>
+part of the inner result.</p>
+</div><h4 id='method.recv_multipart' class="method"><span id='recv_multipart.v-1' class='invisible'><code>fn <a href='#method.recv_multipart' class='fnname'>recv_multipart</a>(&amp;self, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/zmq_tokio/transport.rs.html#126-135' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Receive a multipart message from the socket.</p>
+
+<p>Note that this will allocate a new vector for each message part; for many applications it
+will be possible to process the different parts sequentially and reuse allocations that
+way.</p>
+</div></div></span>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    </ul><script type="text/javascript" async
+                         src="../implementors/zmq_tokio/trait.SocketRecv.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "zmq_tokio";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

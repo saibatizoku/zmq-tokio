@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["MessageTransport","Tokio transport for one-part messages."],["MultipartMessageTransport","Tokio transport for multipart-messages."]]});

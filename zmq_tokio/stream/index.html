@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `future` mod in crate `zmq_tokio`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, future">
+    <meta name="description" content="API documentation for the Rust `stream` mod in crate `zmq_tokio`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, stream">
 
-    <title>zmq_tokio::future - Rust</title>
+    <title>zmq_tokio::stream - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
@@ -30,7 +30,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module future</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'><a href='../index.html'>zmq_tokio</a></p><script>window.sidebarCurrent = {name: 'future', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+        <p class='location'>Module stream</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'><a href='../index.html'>zmq_tokio</a></p><script>window.sidebarCurrent = {name: 'stream', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -45,42 +45,26 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>zmq_tokio</a>::<wbr><a class="mod" href=''>future</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>zmq_tokio</a>::<wbr><a class="mod" href=''>stream</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/zmq_tokio/future.rs.html#1-135' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Futures for ØMQ sockets.</p>
+               </span><a class='srclink' href='../../src/zmq_tokio/stream.rs.html#1-84' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Streams for sockets.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="struct" href="struct.ReceiveMessage.html"
-                                  title='struct zmq_tokio::future::ReceiveMessage'>ReceiveMessage</a></td>
+                           <td><a class="struct" href="struct.MessageStream.html"
+                                  title='struct zmq_tokio::stream::MessageStream'>MessageStream</a></td>
                            <td class='docblock-short'>
-                                <p>A Future that receives a <code>Message</code> asynchronously. This is returned by <code>Socket::recv</code></p>
+                                <p>Single-message stream for sockets.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="struct" href="struct.ReceiveMultipartMessage.html"
-                                  title='struct zmq_tokio::future::ReceiveMultipartMessage'>ReceiveMultipartMessage</a></td>
+                           <td><a class="struct" href="struct.MultipartMessageStream.html"
+                                  title='struct zmq_tokio::stream::MultipartMessageStream'>MultipartMessageStream</a></td>
                            <td class='docblock-short'>
-                                <p>A Future that receives a multi-part <code>Message</code> asynchronously.
-This is returned by <code>Socket::recv_multipart</code></p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.SendMessage.html"
-                                  title='struct zmq_tokio::future::SendMessage'>SendMessage</a></td>
-                           <td class='docblock-short'>
-                                <p>A Future that sends a <code>Message</code> asynchronously. This is returned by <code>Socket::send</code></p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.SendMultipartMessage.html"
-                                  title='struct zmq_tokio::future::SendMultipartMessage'>SendMultipartMessage</a></td>
-                           <td class='docblock-short'>
-                                <p>A Future that sends a multi-part <code>Message</code> asynchronously.
-This is returned by <code>Socket::send_multipart</code></p>
+                                <p>Single-message stream for sockets.</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>

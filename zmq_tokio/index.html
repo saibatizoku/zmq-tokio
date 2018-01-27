@@ -30,7 +30,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Crate zmq_tokio</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'zmq_tokio', ty: 'mod', relpath: '../'};</script></div>
+        <p class='location'>Crate zmq_tokio</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'zmq_tokio', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
     <nav class="sub">
@@ -49,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/zmq_tokio/lib.rs.html#1-463' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/zmq_tokio/lib.rs.html#1-486' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id='Ømq-zeromq-for-tokio' class='section-header'><a href='#Ømq-zeromq-for-tokio'>ØMQ (ZeroMQ) for tokio</a></h1>
 <p>Run ØMQ sockets using <code>tokio</code> reactors, futures, etc.</p>
@@ -84,9 +84,9 @@ a message, and the <code>receiver</code> gets it.</p>
     <span class="kw">let</span> <span class="ident">sendr</span> <span class="op">=</span> <span class="ident">context</span>.<span class="ident">socket</span>(<span class="ident">PAIR</span>, <span class="kw-2">&amp;</span><span class="ident">reactor</span>.<span class="ident">handle</span>()).<span class="ident">unwrap</span>();
     <span class="kw">let</span> _ <span class="op">=</span> <span class="ident">sendr</span>.<span class="ident">connect</span>(<span class="ident">TEST_ADDR</span>).<span class="ident">unwrap</span>();
 
-    <span class="comment">// Step 1: send any type implementing `Into&lt;Message&gt;`,</span>
+    <span class="comment">// Step 1: send any type implementing `Into&lt;zmq::Message&gt;`,</span>
     <span class="comment">//         meaning `&amp;[u8]`, `Vec&lt;u8&gt;`, `String`, `&amp;str`,</span>
-    <span class="comment">//         and `Message` itself.</span>
+    <span class="comment">//         and `zmq::Message` itself.</span>
     <span class="kw">let</span> <span class="ident">send_future</span> <span class="op">=</span> <span class="ident">sendr</span>.<span class="ident">send</span>(<span class="string">&quot;this message will be sent&quot;</span>);
 
     <span class="comment">// Step 2: receive the message on the pair socket</span>
@@ -223,14 +223,28 @@ Save goes for receiving.</p>
     <span class="comment">// Exit our program, playing nice.</span>
     ::<span class="ident">std</span>::<span class="ident">process</span>::<span class="ident">exit</span>(<span class="number">0</span>);
 }</pre>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">DEALER</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PAIR</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PUB</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PULL</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">PUSH</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">REP</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">REQ</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">ROUTER</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">STREAM</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">SUB</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">XPUB</a>;</code></td></tr><tr><td><code>pub use self::SocketType::<a class="enum" href="../zmq_tokio/enum.SocketType.html" title="enum zmq_tokio::SocketType">XSUB</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
+<table><tr><td><code>pub extern crate <a class="mod" href="../zmq/index.html" title="mod zmq">zmq</a>;</code></td></tr><tr><td><code>pub use zmq::<a class="enum" href="../zmq/enum.SocketType.html" title="enum zmq::SocketType">SocketType</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="mod" href="future/index.html"
                                   title='mod zmq_tokio::future'>future</a></td>
                            <td class='docblock-short'>
                                 <p>Futures for ØMQ sockets.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="stream/index.html"
+                                  title='mod zmq_tokio::stream'>stream</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams for sockets.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="transport/index.html"
+                                  title='mod zmq_tokio::transport'>transport</a></td>
+                           <td class='docblock-short'>
+                                <p>Tokio transports for sockets.</p>
                            </td>
                        </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -239,6 +253,14 @@ Save goes for receiving.</p>
                                   title='struct zmq_tokio::Context'>Context</a></td>
                            <td class='docblock-short'>
                                 <p>Wrapper for <code>zmq::Context</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Error.html"
+                                  title='struct zmq_tokio::Error'>Error</a></td>
+                           <td class='docblock-short'>
+                                <p>The error type for I/O operations of the <a href="../io/trait.Read.html"><code>Read</code></a>, <a href="../io/trait.Write.html"><code>Write</code></a>, <a href="../io/trait.Seek.html"><code>Seek</code></a>, and
+associated traits.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -262,13 +284,28 @@ Save goes for receiving.</p>
                            <td class='docblock-short'>
                                 <p>A custom transport type for <code>Socket</code>.</p>
                            </td>
-                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="enum" href="enum.SocketType.html"
-                                  title='enum zmq_tokio::SocketType'>SocketType</a></td>
+                           <td><a class="trait" href="trait.SocketRecv.html"
+                                  title='trait zmq_tokio::SocketRecv'>SocketRecv</a></td>
                            <td class='docblock-short'>
-                                <p>Socket types</p>
+                                <p>API methods for receiving messages with sockets.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SocketSend.html"
+                                  title='trait zmq_tokio::SocketSend'>SocketSend</a></td>
+                           <td class='docblock-short'>
+                                <p>API methods for sending messages with sockets.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.convert_into_tokio_socket.html"
+                                  title='fn zmq_tokio::convert_into_tokio_socket'>convert_into_tokio_socket</a></td>
+                           <td class='docblock-short'>
+                                <p>Convert an <code>zmq::Socket</code> instance into <code>zmq_tokio::Socket</code>.</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
